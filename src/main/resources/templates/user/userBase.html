@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Starter Template</title>
+    
+</head>
+<body th:fragment="body(content)">
+
+	<!--navbar-->
+	<nav class="navbar navbar-expand navbar-dark bg-dark  bg-primary" >
+	      <a class="navbar-brand" href="#">Smart Contact Manager</a>
+<!--	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>-->
+
+	      <div class="collapse navbar-collapse" id="navbarsExample02">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active">
+	          
+	            <a class="nav-link" th:href="@{/home}" href="#"> Home </a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" th:href="@{/about}"  href="#" th:text="${user.name}"></a>
+	          </li>
+			  <li class="nav-item">
+			    <a class="nav-link" th:href="@{/logout}" href="#">Logout</a>
+	          </li>
+
+	        </ul>
+	      </div>
+	    </nav>
+<!-- nav end-->
+
+<div class="d-flex">
+<!-- sidebar -->
+<div class=" flex-column flex-shrink-0 p-3 text-white bg-dark sidebar" style="width: 280px; ">
+    
+    
+    <ul class="nav nav-pills flex-column mb-auto">
+     <li><span onclick="toggleSidebar()" class="crossBtn">&times;</span></li>
+      <li class="nav-item">
+        <a href="#"  class="nav-link ">
+         <i  class="bi bi-house-door"></i>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/user/Mycontacts" class="nav-link">
+        <i class="bi bi-person-lines-fill "></i>
+                   View Contacts
+        </a>
+      </li>
+      <li>
+        <a href="/user/AddContact" class="nav-link ">
+        <i class="bi bi-person-add"></i>
+                    Add Contacts
+        </a>
+      </li>
+      <li>
+        <a href="/user/MyProfile" class="nav-link ">
+        <i class="bi bi-person-circle"></i>
+                   Your Profile
+        </a>
+      </li>
+      <li>
+        <a  href="/logout" class="nav-link ">
+        <i class="bi bi-box-arrow-left"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong th:text="${user.name}"></strong>
+      </a>
+    </div>
+</div>
+  <!-- sidebar end -->
+  
+ <div class="content1">
+ 
+<i style="cursor:pointer; font-size: 30px;" onclick="toggleSidebar()" class="bi bi-list-ul menu-icon"></i>
+<div  th:replace="${content}"></div>
+</div>
+
+</body>
+</html>
+

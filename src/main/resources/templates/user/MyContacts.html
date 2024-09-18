@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>About</title>
+
+<!-- Corrected Bootstrap CSS CDN -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body th:replace="~{user/userBase::body(~{::section})}">
+	<!--header-->
+	<section>
+		
+		<h1 class="text-center">MY CONTACTS</h1>
+		<div th:if="${message}" th:classappend="${message.type}" class="alert " role="alert">
+							<p th:text="${message.content}"></p>
+
+						</div> 
+		<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">C.Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone </th>
+      <th scope="col">Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="contact: ${contacts}">
+      <th scope="row" th:text="${contact.cId}">1</th>
+      <td >
+      <img class="logo" src="/image/logocontact.jpeg" th:src="@{'/image/'+${contact.imageUrl}}" alt="img">
+      <span th:text="${contact.name}"></span>
+      </td>
+      <td >
+      <a th:href="@{'/user/contacts'+${contact.cId}}">
+      <span th:text="${contact.email}">
+      </span>
+      </a>
+      </td>
+      <td th:text="${contact.phone}">@mdo</td>
+      <td ><div class="d-flex ">
+<a th:href="@{'/user/delete/'+${contact.cId}}" class="btn btn-danger action-btn">Delete</a>
+ <form th:action="@{'/user/update/'+${contact.cId}}" method="post">
+      <button type="submit" class="btn btn-info action-btn">Update</button>
+      </form></div>
+</td>
+    </tr>
+   
+  </tbody>
+</table>
+
+ 
+		<!--  JQuery -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- Popper.js (must be included before Bootstrap JS) -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+
+		<!-- Corrected Bootstrap JS CDN -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script th:src="@{/JS/script1.js}"></script>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+	<!-- Custom CSS -->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+
+	<!-- Corrected Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+<body th:replace="~{base::body(~{::section})}">
+	<!--header-->
+    <section class="content d-flex justify-content-center  align-items-center">
+		<div><div> WELCOME TO  SMART CONTACT MANAGER</div>	
+		<a href="/signin" class="btn btn-primary">GET STARTED</a>
+	</div>
+	</section>
+     
+     
+     
+	<!-- Popper.js (must be included before Bootstrap JS) -->
+	    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+	    
+	    <!-- Corrected Bootstrap JS CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
